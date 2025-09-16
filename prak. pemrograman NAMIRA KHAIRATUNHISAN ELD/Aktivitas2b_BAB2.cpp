@@ -7,7 +7,7 @@ int main(){
 	cin>> bil1 >> bil2;
 	
 	cout<<"bilangan pertama: "<< bil1 <<endl;
-	cout<<"bilangan kedua: "<< bil2;
+	cout<<"bilangan kedua: "<< bil2 << endl;
 	
 	string kalimat;
 	cin.ignore();
