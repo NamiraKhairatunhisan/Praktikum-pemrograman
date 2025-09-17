@@ -1,15 +1,21 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-int main(){
-	int bil1, bil2, bil3;
-	cout<<"masukkan tiga bilangan (pisahkan dengan spasi): ";
-	cin>> bil1 >> bil2 >> bil3;
-	
-	cout<<"bilangan pertama: "<< bil1 <<endl;
-	cout<<"bilangan kedua: "<< bil2<<endl;
-	cout<<"bilangan terakhir: "<< bil3 <<endl;
-	
-	return 0;
+int main() {
+    int matriks[3][3];
 
+    for (int i = 0; i < 3; i++) {
+        cout << "Masukan data matriks baris " << i+1 << ": ";
+        cin >> matriks[i][0] >> matriks[i][1] >> matriks[i][2];
+    }
+
+    cout <<endl<< "Data yang anda masukan:\n";
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << matriks[i][j]<<"    ";
+        }
+        cout << "\n";
+    }
+
+    return 0;
 }
