@@ -1,0 +1,9 @@
+3.2 Apa perbedaan while dengan for?
+
+while loops digunakan untuk perulangan dimana kondisi perulangannya tidak diketahui dengan pasti. 
+Misalkan ingin menampilkan semua isi dari suatu file. File tersebut kita tidak tahu apakah isinya ada 4, 6, atau 2. 
+Dalam while loops, selama while(true) maka akan dilaksanakan, dan berhenti ketika while(false)
+
+for i loops adalah perulangan yang mana jumlah perulangannya sudah diketaui. 
+misalnya ketika ingin melakukan perulangan sebanyak n kali, 
+maka dapat digunakan for (i=0; i<n; i++)
