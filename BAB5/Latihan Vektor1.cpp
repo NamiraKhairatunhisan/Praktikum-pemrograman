@@ -19,7 +19,7 @@ int main() {
 	}
 
 	for (int i = 0; i < n; i++) {
-		for (int j = 0; j < 2; j++)
-			cout << transaksi[i][j] << " ";
+		cout<< transaksi[i].first<<" "<< transaksi[i].second<<endl;
 	}
 }
+
