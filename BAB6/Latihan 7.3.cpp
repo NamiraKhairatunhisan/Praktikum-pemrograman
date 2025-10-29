@@ -1,135 +1,146 @@
-#include<iostream>
-#include<fstream>
-#include<sstream>
+#include <iostream>
+#include <fstream>
+#include <sstream>
 using namespace std;
 
 struct Karyawan {
-	string nama;
-	int umur;
-	string nik;
-	string jabatan;
+    string nama;
+    int umur;
+    string nik;
+    string jabatan;
 };
 
-const int jumlahKaryawan = 100;
-	Karyawan krywn[jumlahKaryawan];
-	int count =0;
-	int opsi;
-	string cariNik;
+const int jmlhKaryawan = 100;
+Karyawan karywn[jmlhKaryawan];
+int count = 0;
+int opsi;
+string cariNik;
 
-void TampilData(){
-	cout << "Data Karyawan"<<endl;
-	for(int i =0; i < count; i++){
-	cout<< "Karyawan " << i+1 << endl;
-	cout << "Nama: " << krywn[i].nama<<endl;
-	cout<<"Umur: " << krywn[i].umur <<endl;
-	cout<<"NIK: " << krywn[i].nik<<endl;
-	cout<<"Jabatan: " << krywn[i].jabatan<<endl<<endl;
-	}
-};
-void TambahData(){
-	cout<< "masukkan data baru" <<endl;
-				cout << "Nama: ";
-				cin >> krywn[count].nama;
-				cout<<"Umur: ";
-				cin >> krywn[count].umur;
-				cout<<"NIK: ";
-				cin >> krywn[count].nik;
-				cout<<"Jabatan: ";
-				cin >> krywn[count].jabatan;
-				cout <<endl;
-				
-				count++;
-};
+void TampilData() {}
+void TambahData() {}
+void EditData() {}
+void HapusData() {}
 
-void EditData(){
-	for(int i=0; i<count; i++){
-				if (cariNik == krywn[i].nik){
-					cout<< "masukkan data baru" <<endl;
-					cout << "Nama: ";
-					cin >> krywn[i].nama;
-					cout<<"Umur: ";
-					cin >> krywn[i].umur;
-					cout<<"NIK: ";
-					cin >> krywn[i].nik;
-					cout<<"Jabatan: ";
-					cin >> krywn[i].jabatan;
-					cout <<endl;
-				}
-			}
-};
-void HapusData(){
+int main()
+{
 
-for(int i=0; i<count; i++){
-				if (cariNik == krywn[i].nik){
-					for (int j=i; j<count-1; j++){
-						krywn[j] = krywn [j+1];
-					}
-					cout<< "Data telah dihapus! " << endl;
-					
-					count --;
-				}
-			}
-};
+    int count = 0;
+    ifstream inputFile("karyawan.txt");
+    if (!inputFile) {
+        cout << "tidak dapat menemukan file!" << endl;
+        return 1;
+    }
 
-int main (){
-	ifstream inputFile("karyawan.txt");
-	if(!inputFile){
-		cout<<"file gagal dibaca" << endl;
-		return 1;
-	}
-	
-	string line;
-	
-	while (getline(inputFile, line) && count < jumlahKaryawan){
-		stringstream ss(line);
-		ss >> krywn[count].nama >> krywn[count].umur >> krywn[count].nik >> krywn[count].jabatan;
-		count++;
-	}
-	inputFile.close();
-	
-	while(true){
-		cout<< "----------------------" << endl;
-		cout<< "Pilih opsi (dalam angka)"<<endl;
-		cout<< "1) Tampilkan semua data" <<endl;
-		cout<< "2) Tambahkan data" << endl;
-		cout << "3) Edit data" <<endl;
-		cout << "4) Hapus data" <<endl << endl;
-		cin >> opsi;
-		
-		switch (opsi){
-			case 1:
-			TampilData();
-			break;
-			
-			case 2:
-			if (count+1 < jumlahKaryawan){
-				TambahData();
-			}
-			else{
-				cout << "data penuh";
-			}
-			break;
-			
-			case 3:
-			cout<< "masukkan NIK yang ingin diedit: ";
-			cin >> cariNik;
-			
-			EditData();
-			
-			break;
-			
-			case 4:
-			cout<< "masukkan NIK yang ingin dihapus: ";
-			cin >> cariNik;
-			
-			HapusData();
-			break;
-			
-			default:
-				cout<< "invalid"<<endl;
-				break;
-		}
-		
-	}
-	
+    string line;
+
+    while (getline(inputFile, line) && count < jmlhKaryawan) {
+        stringstream ss(line);
+        ss >> karywn[count].nama >> karywn[count].umur >> karywn[count].nik >> karywn[count].jabatan;
+        count++;
+    }
+
+    inputFile.close();
+
+    while (true) {
+        cout << "-----------------------------------------------------------------------------------------" << endl;
+        cout << "pilih opsi(angka): " << endl;
+        cout << "1) Tampilkan seluruh data karyawan" << endl;
+        cout << "2) Tambah karyawan" << endl;
+        cout << "3) edit karyawan" << endl;
+        cout << "4) hapus karyawan" << endl << endl;
+
+        cin >> opsi;
+
+        switch (opsi) {
+        case 1://seluruh data
+
+            cout << "data karyawan: " << endl;
+            TampilData();
+
+            break;
+
+        case 2://tambah data
+            if (count + 1 < jmlhKaryawan) {
+                TambahData();
+                count++;
+            }
+            else
+                cout << "data penuh" << endl;
+
+            cout << endl;
+            break;
+
+        case 3://edit
+            cout << "masukkan NIK: " << endl;
+            cin >> cariNik;
+
+            EditData();
+            break;
+
+        case 4: //hapus
+            cout << "masukkan NIK: " << endl;
+            cin >> cariNik;
+
+            HapusData();
+            break;
+
+        default:
+            cout << "invalid" << endl << endl;
+            break;
+        }
+    }
+
+    return 0;
+}
+
+
+void TampilData() {
+    for (int i = 0; i < count; i++) {
+        cout << "Karyawan " << i + 1 << ": " << endl;
+        cout << "Nama: " << karywn[i].nama << endl;
+        cout << "Umur: " << karywn[i].umur << endl;
+        cout << "NIK: " << karywn[i].nik << endl;
+        cout << "Jabatan: " << karywn[i].jabatan << endl << endl;
+    }
+}
+
+void TambahData() {
+    cout << "Masukkan nama: " << endl;
+    cin >> karywn[count].nama;
+    cout << "Masukkan umur: " << endl;
+    cin >> karywn[count].umur;
+    cout << "Masukkan NIK: " << endl;
+    cin >> karywn[count].nik;
+    cout << "Masukkan jabatan: " << endl;
+    cin >> karywn[count].jabatan;
+}
+
+void EditData() {
+    cout << "masukkan NIK: " << endl;
+    cin >> cariNik;
+
+    for (int i = 0; i < count; i++) {
+        if (cariNik == karywn[i].nik) {
+            cout << "masukkan data baru" << endl;
+            cout << "Masukkan nama: " << endl;
+            cin >> karywn[i].nama;
+            cout << "Masukkan umur: " << endl;
+            cin >> karywn[i].umur;
+            cout << "Masukkan NIK: " << endl;
+            cin >> karywn[i].nik;
+            cout << "Masukkan jabatan: " << endl;
+            cin >> karywn[i].jabatan;
+        }
+    }
+}
+void HapusData() {
+    for (int i = 0; i < count; i++) {
+        if (cariNik == karywn[i].nik) {
+            for (int j = i; j < count - 1; j++) {
+                karywn[j] = karywn[j + 1];
+            }
+            count -= 1;
+            cout << "Data terhapus!" << endl << endl;
+        }
+    }
 }
