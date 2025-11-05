@@ -1,21 +1,17 @@
 #include<iostream>
 using namespace std;
 
-int totalHadir = 0; // variabel global
+int totalHadir = 0;
 
-// Fungsi untuk mengupdate totalHadir
 void UpdateTotal(int n[], int jmhs){
     for(int i = 0; i < jmhs; i++){
         totalHadir += n[i]; 
     }
 }
-
-// Fungsi untuk menghitung persentase kehadiran
 double Rasio(int totalHadir, int totalPert){
     return (double)totalHadir / totalPert * 100.0;
 }
 
-// Fungsi untuk menampilkan hasil
 void Tampilkan(int totalPert, double persen){
     cout << "total kehadiran kelas: " << totalHadir 
          << " dari " << totalPert << endl;
@@ -46,3 +42,4 @@ int main(){
 
     return 0;
 }
+
