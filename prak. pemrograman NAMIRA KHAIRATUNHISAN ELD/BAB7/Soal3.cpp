@@ -1,42 +1,48 @@
 #include<iostream>
 using namespace std;
 
-int totalHadir = 0;
+int totalHadir = 0; // variabel global
 
-int TotalHadir(int n[], int stop){
-	int jumlah = 0;
-	for (int i =0; i<stop; i++){
-		jumlah += n[i];
-	}
-	return jumlah;
+// Fungsi untuk mengupdate totalHadir
+void UpdateTotal(int n[], int jmhs){
+    for(int i = 0; i < jmhs; i++){
+        totalHadir += n[i]; 
+    }
 }
 
-double Rasio(double x, double y){
-	return x/y*100; 
+// Fungsi untuk menghitung persentase kehadiran
+double Rasio(int totalHadir, int totalPert){
+    return (double)totalHadir / totalPert * 100.0;
 }
 
-void Tampilkan(int hadir, int pert, double persen){
-	cout<< "total kehadiran kelas: " << hadir << " dari " << pert <<endl;
-	cout << "persentase kehadiran: " << persen << "%";
+// Fungsi untuk menampilkan hasil
+void Tampilkan(int totalPert, double persen){
+    cout << "total kehadiran kelas: " << totalHadir 
+         << " dari " << totalPert << endl;
+    cout << "persentase kehadiran: " << persen << "%" << endl;
 }
 
 int main(){
-	int jmlhM, pertemuan, totalKehadiran, hadir, persentase;
-	cout<< "jumlah mahasiswa: ";
-	cin >> jmlhM;
-	int kehadiran[jmlhM];
-	
-	cout<< "total pertemuan: ";
-	cin >> pertemuan;
-	totalKehadiran = pertemuan*jmlhM;
-	
-	for (int i=0; i<jmlhM; i++){
-		cout<< "kehadiran mahasiswa ke-" << i+1<<": ";
-		cin >> kehadiran[i];
-	}
-	
-	hadir = TotalHadir(kehadiran, jmlhM);
-	persentase = Rasio(hadir, totalKehadiran);
-	Tampilkan (hadir, totalKehadiran, persentase);
+    int jmlhM, pertemuan;
 
+    cout << "jumlah mahasiswa: ";
+    cin >> jmlhM;
+
+    int kehadiran[jmlhM];
+
+    cout << "total pertemuan: ";
+    cin >> pertemuan;
+
+    int totalPertemuan = jmlhM * pertemuan;
+
+    for(int i = 0; i < jmlhM; i++){
+        cout << "kehadiran mahasiswa ke-" << i + 1 << ": ";
+        cin >> kehadiran[i];
+    }
+
+    UpdateTotal(kehadiran, jmlhM);
+    double persen = Rasio(totalHadir, totalPertemuan);
+    Tampilkan(totalPertemuan, persen);
+
+    return 0;
 }
