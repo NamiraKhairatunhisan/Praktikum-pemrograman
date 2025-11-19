@@ -17,13 +17,6 @@ void bubble_sort(int data[], int n){
 			swap(data[j-1], data[j]);
 		}
 	}
-	
-	for (int i=0; i<n; i++){
-		if(i==n-1)
-		cout << data[i]<< " ";
-		else
-		cout << data[i]<< ", ";
-	}
 }
 
 int main (){
@@ -39,15 +32,16 @@ int main (){
 	}
 	
 	bubble_sort(data, n);
-	int median;
+	float median;
 	if (n%2==0){
 		median = n/2;
-		cout<< "median: " << urut[median-1];
+		cout<< "median: " << data[median-1];
 	}
 	if (n%2!=0){
-		median = (n+1)/2;
-		cout<< "median: " << urut[median-1];
+		median = data[(n+1)/2-1]+data[(n+1)/2];
+		cout<< "median: " << data[median-1];
 	}
 	
 	return 0;
 }
+
