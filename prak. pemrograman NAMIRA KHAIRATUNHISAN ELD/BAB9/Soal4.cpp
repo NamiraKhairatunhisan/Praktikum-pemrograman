@@ -33,14 +33,18 @@ int main (){
     if (n % 2 != 0) {  
         // ganjil → ambil elemen tengah
         median = data[n/2];
-        cout << median;
     }
     else {            
         // genap → rata-rata dua elemen tengah
         median = (data[n/2 - 1] + data[n/2]) / 2.0;
-        cout << median;
     }
-
+    
+    cout<<"data urut: ";
+    for(int i=0; i<n; i++){
+        cout<< data[i];
+        if(i!=n-1) cout<< ", ";
+    }
+    
+    cout<<endl << "Median adalah: " << median;
     return 0;
 }
-
