@@ -19,10 +19,11 @@ void bubble_sort(int data[], int n) {
 
 int main() {
     int n, L, R;
-
+    cout<<"jumlah data, indexawal, index akhir: ";
     cin >> n >> L >> R;
     int A[n];
 
+    cout<< "Masukkan data: ";
     for (int i = 0; i < n; i++) {
         cin >> A[i];
     }
