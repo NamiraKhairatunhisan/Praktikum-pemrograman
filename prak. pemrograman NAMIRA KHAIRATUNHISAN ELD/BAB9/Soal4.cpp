@@ -18,9 +18,11 @@ void bubble_sort(int data[], int n){
 
 int main (){
     int n;
-    cin >> n;
+    cout<<"jumlah data: "; 
+    cin >> n; 
     int data[n];
-
+    
+    cout<< "masukkan data: "<< endl;
     for(int i = 0; i < n; i++){
         cin >> data[i];
     }
@@ -41,5 +43,4 @@ int main (){
 
     return 0;
 }
-
 
