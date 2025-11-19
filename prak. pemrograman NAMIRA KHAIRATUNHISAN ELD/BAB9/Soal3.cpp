@@ -23,7 +23,7 @@ int main() {
     cin >> n >> L >> R;
     int A[n];
 
-    cout<< "Masukkan data: ";
+    cout<< "Masukkan data: "<<endl;
     for (int i = 0; i < n; i++) {
         cin >> A[i];
     }
