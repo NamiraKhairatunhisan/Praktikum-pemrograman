@@ -1,56 +1,51 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 void swap(int &a, int &b) {
-int temp;
-temp = a;
-a = b;
-b = temp;
+    int temp = a;
+    a = b;
+    b = temp;
 }
 
-void bubble_sort(int data[], int n){
-	for (int i =0; i<n-1; i++){
-		for (int j=n-1; j>i; j--){
-			if (data[j] > data[j-1])
-			swap(data[j-1], data[j]);
-		}
-	}
-	
-	for (int i=0; i<n; i++){
-		cout << data[i]<< " ";
-	}
+void bubble_sort(int data[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = n - 1; j > i; j--) {
+            if (data[j] < data[j - 1]) {   // ascending
+                swap(data[j], data[j - 1]);
+            }
+        }
+    }
 }
 
-int main (){
-	int n, awal, akhir;
-	
-	cout<<"jumlah data, indexawal, index akhir: ";
-	cin >> n >> awal >> akhir;
-	int data[n];
-	
-	cout<< "masukkan data: "<< endl;
-	for(int i=0; i<n; i++){
-		cin>> data[i];
-	}
-	
-	int j=0;
-	int dari[1000];
-		for(int i=awal; i<akhir; i++){
-			dari[j]==data[i];
-			j++;
-		}
-	
-	for(int i=0; i<awal; i++){
-		cout<< data[i]<< " ";
-	}
-	
-	int jumlah = akhir-awal+1;
-	
-	bubble_sort(dari, jumlah);
-	
-	for(int i=akhir; i<n; i++){
-		cout<< data[i]<< " ";
-	}
-	
-	return 0;
+int main() {
+    int n, L, R;
+
+    cin >> n >> L >> R;
+    int A[n];
+
+    for (int i = 0; i < n; i++) {
+        cin >> A[i];
+    }
+
+    int temp[1000];
+    int idx = 0;
+
+    for (int i = L; i <= R; i++) {
+        temp[idx] = A[i];
+        idx++;
+    }
+
+    bubble_sort(temp, R - L + 1);
+
+    idx = 0;
+    for (int i = L; i <= R; i++) {
+        A[i] = temp[idx];
+        idx++;
+    }
+    for (int i = 0; i < n; i++) {
+        cout << A[i];
+        if (i != n - 1) cout << ",";
+    }
+
+    return 0;
 }
